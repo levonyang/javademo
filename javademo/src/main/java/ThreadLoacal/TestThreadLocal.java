@@ -15,7 +15,6 @@ public class TestThreadLocal {
         TestAbstract testAbstract=testSer;
         ExecutorService threadPool= Executors.newFixedThreadPool(20);
         threadPool.submit(new Runnable() {
-            @Override
             public void run() {
                 testSer.setDsad(23);
                 System.out.println(testSer.getDsad());
