@@ -1,6 +1,4 @@
-package ThreadLoacal;
-
-import java.util.List;
+package threadlocal;
 
 public abstract  class TestAbstract {
     public Integer getDsad() {

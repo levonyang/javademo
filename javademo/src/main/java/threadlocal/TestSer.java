@@ -1,4 +1,4 @@
-package ThreadLoacal;
+package threadlocal;
 
 import java.io.Serializable;
 

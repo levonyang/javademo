@@ -1,3 +1,5 @@
+package jsonhandle;
+
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -66,6 +68,6 @@ import java.util.Map;
             this.age = age;
         }
         public String toString(){
-            return "Student [ name: "+name+", age: "+ age+ " ]";
+            return "jsonhandle.Student [ name: "+name+", age: "+ age+ " ]";
         }
     }

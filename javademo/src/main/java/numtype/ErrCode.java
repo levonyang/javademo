@@ -1,4 +1,4 @@
-package testenum;
+package numtype;
 
 /**
  * user:zxp
