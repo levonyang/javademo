@@ -1,16 +1,12 @@
-package XMLPersister;
+package xmlpersister;
 
 import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.io.json.JettisonMappedXmlDriver;
-import com.thoughtworks.xstream.io.xml.DomDriver;
 import com.thoughtworks.xstream.io.xml.StaxDriver;
 import com.thoughtworks.xstream.persistence.FilePersistenceStrategy;
 import com.thoughtworks.xstream.persistence.PersistenceStrategy;
-import com.thoughtworks.xstream.persistence.XmlArrayList;
 import com.thoughtworks.xstream.persistence.XmlMap;
 
 import java.io.*;
-import java.util.List;
 
 public class XstreamPersister{
     public static void main(String[] args) {

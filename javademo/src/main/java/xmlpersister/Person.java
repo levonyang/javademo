@@ -1,4 +1,4 @@
-package XMLPersister;
+package xmlpersister;
 
 public class Person {
     private String name;

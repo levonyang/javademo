@@ -1,4 +1,4 @@
-package concurrent.sequential;
+package concurrent;
 
 import java.util.concurrent.Semaphore;
 
