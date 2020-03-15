@@ -14,6 +14,8 @@ import org.apache.hadoop.io.BytesWritable;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.SequenceFile;
 import org.apache.hadoop.io.Text;
+import org.apache.hadoop.util.Shell;
+import org.apache.hadoop.util.StringUtils;
 
 import java.io.File;
 import java.io.FileFilter;
@@ -33,6 +35,7 @@ public class TestHadoopFile {
     public static void main(String[] args) throws IOException, InterruptedException {
         TestHadoopFile testHadoopFile = new TestHadoopFile();
         testHadoopFile.initConfig();
+
         //testHadoopFile.writeHvtFile(new File("C:\\Users\\zhangxuepei\\Desktop\\新建文件夹 (3)"));
     }
 
@@ -67,6 +70,8 @@ public class TestHadoopFile {
         //连接HDFS文件系统
         //Hadoop中有多种文件系统（FileSystem有很多实现类），其中最重要的事分布式文件系统
         fsSource = FileSystem.get(URI.create("hdfs://10.19.154.149:9000"), conf, user);
+        boolean ds=fsSource.delete(new Path("/test222"),true);
+        System.out.println(ds);
     }
 
     private void writeHvtFile(File hvtDirection) throws IOException {
