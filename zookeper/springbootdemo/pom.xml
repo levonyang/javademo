@@ -13,7 +13,8 @@
     <artifactId>springbootdemo</artifactId>
     <properties>
         <java.version>1.8</java.version>
-        <aop.version>4.3.21.RELEASE</aop.version>
+        <zookeeper.version>3.5.5</zookeeper.version>
+        <curator.version>4.0.1</curator.version>
     </properties>
     <dependencies>
         <dependency>
@@ -21,10 +22,25 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+<!--        <dependency>-->
+<!--            <groupId>org.apache.zookeeper</groupId>-->
+<!--            <artifactId>zookeeper</artifactId>-->
+<!--            <version>${zookeeper.version}</version>-->
+<!--        </dependency>-->
         <dependency>
-            <groupId>org.apache.zookeeper</groupId>
-            <artifactId>zookeeper</artifactId>
-            <version>3.5.5</version>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-client</artifactId>
+            <version>${curator.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-framework</artifactId>
+            <version>${curator.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-recipes</artifactId>
+            <version>${curator.version}</version>
         </dependency>
     </dependencies>
 
@@ -36,22 +52,4 @@
             </plugin>
         </plugins>
     </build>
-    <!--Pom 文件配置多环境  指定不同环境下  properties 属性值
-       所有得放都可以使用 ${} 获取对应的属性值  包括打包和版本
-     -->
-    <profiles>
-        <profile>
-            <id>development</id>
-            <properties>
-                <env>development</env>
-            </properties>
-        </profile>
-        <profile>
-            <id>testsa</id>
-            <properties>
-                <env>test</env>
-            </properties>
-        </profile>
-    </profiles>
-
 </project>

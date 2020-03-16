@@ -1,4 +1,4 @@
-package demo;
+package demo.zookeepernative;
 
 import org.apache.zookeeper.CreateMode;
 import org.apache.zookeeper.WatchedEvent;
@@ -26,7 +26,7 @@ public class FairSelectLeader {
     private boolean leader = false;
     private ZooKeeper zk;
     //连接的zk的地址及端口号配置
-    private String connectString = "10.19.154.187:2181,10.19.154.188:2181,10.19.154.189:2181" + ",10.19.154.191:2181,10.19.154.192:2181";
+    private String connectString = "10.19.154.187:2181,10.19.154.188:2181,10.19.154.189:2181,10.19.154.191:2181,10.19.154.192:2181";
     //会话超时时间,单位毫秒
     private int sessionTimeout = 15000;
     private String serverPathpre = "/server";
