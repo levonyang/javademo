@@ -1,8 +1,7 @@
 package concurrent;
 
 /**
- * user:zxp
- * Day:2020,02,14
+ * 线程等待测试
  **/
 public class ThreadWait {
     private static Object myLock1 = new Object();

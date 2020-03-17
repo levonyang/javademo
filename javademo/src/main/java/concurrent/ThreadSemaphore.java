@@ -3,8 +3,7 @@ package concurrent;
 import java.util.concurrent.Semaphore;
 
 /**
- * user:zxp
- * Day:2020,02,15
+ * 信号量   测试
  **/
 public class ThreadSemaphore {
     public static void main(String[] args) {

@@ -5,6 +5,7 @@ import java.util.concurrent.CountDownLatch;
 /**
  * user:zxp
  * Day:2020,02,14
+ *  计数器线程锁测试
  **/
 public class CountDownLatchThread {
     public static void main(String[] args) {

@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
  * Day:2020,03,03
  *  递归进行划分任务进行，不需要返回结果
  **/
-public class RecursiveActionTest extends RecursiveAction {
+public class ForkJoinPoolRecursiveActionTest extends RecursiveAction {
     /**
      * 每个"小任务"最多只打印20个数
      */
@@ -17,7 +17,7 @@ public class RecursiveActionTest extends RecursiveAction {
     private int start;
     private int end;
 
-    public RecursiveActionTest(int start, int end) {
+    public ForkJoinPoolRecursiveActionTest(int start, int end) {
         this.start = start;
         this.end = end;
     }
@@ -28,7 +28,7 @@ public class RecursiveActionTest extends RecursiveAction {
         //默认最大线程数量是 CPU数量
         ForkJoinPool forkJoinPool = new ForkJoinPool(Runtime.getRuntime().availableProcessors());
         // 提交可分解的PrintTask任务
-        forkJoinPool.submit(new RecursiveActionTest(0, 1000));
+        forkJoinPool.submit(new ForkJoinPoolRecursiveActionTest(0, 1000));
         //阻塞当前线程直到 ForkJoinPool 中所有的任务都执行结束
         forkJoinPool.awaitTermination(2, TimeUnit.SECONDS);
         // 关闭线程池
@@ -44,8 +44,8 @@ public class RecursiveActionTest extends RecursiveAction {
         } else {
             // 将大任务分解成两个小任务
             int middle = (start + end) / 2;
-            RecursiveActionTest left = new RecursiveActionTest(start, middle);
-            RecursiveActionTest right = new RecursiveActionTest(middle, end);
+            ForkJoinPoolRecursiveActionTest left = new ForkJoinPoolRecursiveActionTest(start, middle);
+            ForkJoinPoolRecursiveActionTest right = new ForkJoinPoolRecursiveActionTest(middle, end);
             left.fork();
             right.fork();
         }

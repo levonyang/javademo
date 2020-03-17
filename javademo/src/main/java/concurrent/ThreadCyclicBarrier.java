@@ -4,8 +4,6 @@ import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 
 /**
- * user:zxp
- * Day:2020,02,15
  *    CyclicBarrier:回环栅栏，需要等待所有线程都到齐，await()之后。
  *    同时继续往下走。
  **/

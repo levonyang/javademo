@@ -7,7 +7,7 @@ import java.util.concurrent.*;
  * user:zxp
  * Day:2020,03,03
  **/
-public class RecursiveTaskTest extends RecursiveTask<Integer> {
+public class ForkJoinPoolRecursiveTaskTest extends RecursiveTask<Integer> {
     /**
      *  每个"小任务"最多只打印70个数
      */
@@ -15,7 +15,7 @@ public class RecursiveTaskTest extends RecursiveTask<Integer> {
     private int arr[];
     private int start;
     private int end;
-    public RecursiveTaskTest(int[] arr, int start, int end) {
+    public ForkJoinPoolRecursiveTaskTest(int[] arr, int start, int end) {
         this.arr = arr;
         this.start = start;
         this.end = end;
@@ -36,7 +36,7 @@ public class RecursiveTaskTest extends RecursiveTask<Integer> {
 
         ForkJoinPool forkJoinPool = new ForkJoinPool();
         // 提交可分解的PrintTask任务
-        Future<Integer> future = forkJoinPool.submit(new RecursiveTaskTest(arr, 0, arr.length));
+        Future<Integer> future = forkJoinPool.submit(new ForkJoinPoolRecursiveTaskTest(arr, 0, arr.length));
         System.out.println("计算出来的总和="+future.get());
 //        Integer integer = forkJoinPool.invoke( new RecursiveTaskTest(arr, 0, arr.length)  );
 //        System.out.println("计算出来的总和=" + integer);
@@ -56,8 +56,8 @@ public class RecursiveTaskTest extends RecursiveTask<Integer> {
             System.err.println("=====任务分解======");
             // 将大任务分解成两个小任务
             int middle = (start + end) / 2;
-            RecursiveTaskTest left = new RecursiveTaskTest(arr, start, middle);
-            RecursiveTaskTest right = new RecursiveTaskTest(arr, middle, end);
+            ForkJoinPoolRecursiveTaskTest left = new ForkJoinPoolRecursiveTaskTest(arr, start, middle);
+            ForkJoinPoolRecursiveTaskTest right = new ForkJoinPoolRecursiveTaskTest(arr, middle, end);
             // 并行执行两个小任务
             left.fork();
             right.fork();

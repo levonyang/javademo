@@ -1,8 +1,6 @@
 package concurrent;
 
 /**
- * user:zxp
- * Day:2020,02,14
  * Description:利用线程join 需要等待join线程执行完成
  **/
 public class ThreadJoin {

@@ -5,8 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * user:zxp
- * Day:2020,03,05
+ * 扩展 泛型测试
  **/
 public class GenericExtendsTest {
     static class Food {}

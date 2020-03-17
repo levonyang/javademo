@@ -1,9 +1,7 @@
 package concurrent;
 
 /**
- * user:zxp
- * Day:2020,02,14
- * Description:主线程 等待子线程一个完成任务，开启另外一个任务
+ * 线程 join测试
  **/
 public class ThreadMainJoin {
     public static void main(String[] args) throws InterruptedException {
