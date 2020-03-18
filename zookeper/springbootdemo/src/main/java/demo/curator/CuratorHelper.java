@@ -8,6 +8,9 @@ import org.apache.curator.retry.RetryNTimes;
  * Author: zhangxuepei
  * Date: 2020/3/18 19:11
  * Content:
+ * 参考地址：https://www.jianshu.com/p/31335efec309 对于锁的类型有问题，
+ * 不应该是共享锁，应该是排它锁 一次值能够有一个获取锁成功
+ * 读锁是共享锁
  */
 public class CuratorHelper {
     // 锁节点
