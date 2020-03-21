@@ -7,7 +7,9 @@ import java.util.concurrent.TimeUnit;
 /**
  * user:zxp
  * Day:2020,03,03
- *  递归进行划分任务进行，不需要返回结果
+ *  递归进行划分任务进行，
+ *         不需要返回结果
+ *   任务划分线程池
  **/
 public class ForkJoinPoolRecursiveActionTest extends RecursiveAction {
     /**

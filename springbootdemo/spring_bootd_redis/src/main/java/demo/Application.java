@@ -7,11 +7,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
 
+import java.util.concurrent.*;
+
 @SpringBootApplication
 public class Application {
     public static void main(String[] args) {
         SpringApplication.run(Application.class,args);
     }
-
-
 }

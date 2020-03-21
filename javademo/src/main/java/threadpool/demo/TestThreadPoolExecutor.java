@@ -12,10 +12,9 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 /**
- * 多任务分配
- *   单个线程处理多个任务
+ * 线程池 执行器
  */
-public class TestThreadPool {
+public class TestThreadPoolExecutor {
     //处理任务的行数
     private static int rowCount = 50;
     //处理任务的列数
@@ -35,16 +34,16 @@ public class TestThreadPool {
     private List<Integer> needSub = new ArrayList<>(countSimple);
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
-        TestThreadPool testThreadPool = new TestThreadPool();
+        TestThreadPoolExecutor testThreadPoolExecutor = new TestThreadPoolExecutor();
         for (int level = 0; level < levelCount; level++) {
             for (int row = 0; row < rowCount; row++) {
                 if (row < rowCount - 1) {
-                    testThreadPool.addTask(false, false,level + " row " + row);
+                    testThreadPoolExecutor.addTask(false, false,level + " row " + row);
                 } else {
                     if (level != levelCount - 1) {
-                        testThreadPool.addTask(false, true,level + " row " + row);
+                        testThreadPoolExecutor.addTask(false, true,level + " row " + row);
                     } else {
-                        testThreadPool.addTask(true, true,level + " row " + row);
+                        testThreadPoolExecutor.addTask(true, true,level + " row " + row);
                     }
                 }
             }
@@ -78,7 +77,7 @@ public class TestThreadPool {
      */
     private void submit(Boolean allEnd, String level, List<Integer> task) throws ExecutionException, InterruptedException {
         //如果队列比较长了 进行循环
-        results.add(threadPoolExecutor.submit(new Task(level, task)));
+        results.add(threadPoolExecutor.submit(new DownloadTask(level, task)));
         if (allEnd) {
             threadPoolExecutor.shutdown();
             getResult(true);
@@ -98,9 +97,14 @@ public class TestThreadPool {
     private void getResult(Boolean isAllEnd) throws ExecutionException, InterruptedException {
         Iterator<Future<String>> resultIter = results.iterator();
         while (resultIter.hasNext()) {
-            System.out.println(resultIter.next().get());
-            //操作完成从结果集合中移出掉
-            resultIter.remove();
+            try{
+                System.out.println(resultIter.next().get());
+            }catch (Exception ex){
+                 //输出异常
+            }finally {
+                //操作完成从结果集合中移出掉 不管有没有异常 都有返回
+                resultIter.remove();
+            }
             if (!isAllEnd) {
                 if (linkedBlockingDeque.size() < maxQue) {
                     break;

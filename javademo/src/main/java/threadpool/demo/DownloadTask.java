@@ -3,10 +3,10 @@ package threadpool.demo;
 import java.util.List;
 import java.util.concurrent.Callable;
 
-public class Task implements Callable<String> {
+public class DownloadTask implements Callable<String> {
     private String current;
     private List<Integer> listIn;
-    public Task(String currentLevel,List<Integer> current){
+    public DownloadTask(String currentLevel, List<Integer> current){
         this.current=currentLevel;
         listIn=current;
     }
