@@ -1,5 +1,7 @@
 package concurrent;
 
+import java.util.concurrent.CopyOnWriteArrayList;
+
 /**
  * 线程等待测试
  **/

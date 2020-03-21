@@ -31,6 +31,7 @@
  *            CyclicBarrier          回环栅栏  可以重复使用  做到线程任务同步
  *            Semaphore              信号量       最多有多少任务可以同时执行
  *            StampedLock            邮戳锁，能够实现读写锁之间的转换 不支持重入
+ *            CopyOnWriteArrayList   CopyOnWriteArraySet 多线程环境下 读写分离
  *     其他需要自己实现的锁：
  *          自旋锁的自己实现：  https://blog.csdn.net/fuyuwei2015/article/details/83387536
  *
@@ -41,6 +42,10 @@
  *  jdk中自旋锁：  jdk1.6之前需要设置
  *                 jdk1.7之后不需要设置，有JVM进行控制
  *
+ *
+ *   锁优化
+ *        消除缓存行的伪共享  在jdk1.8中通过添加sun.misc.Contended注解来解决这个问题，若要使该注解有效必须在jvm中添加以下参数：
+ *                            -XX:-RestrictContended
  *
  */
 package concurrent;
