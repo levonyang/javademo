@@ -1,4 +1,4 @@
-package threadpool.demo;
+package threadpool;
 
 
 import java.util.ArrayList;

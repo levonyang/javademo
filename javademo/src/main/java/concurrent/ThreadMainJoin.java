@@ -4,6 +4,7 @@ package concurrent;
  * 线程 join测试
  **/
 public class ThreadMainJoin {
+
     public static void main(String[] args) throws InterruptedException {
         final Thread threadSalesperson = new Thread(new Runnable() {
             public void run() {
@@ -27,7 +28,6 @@ public class ThreadMainJoin {
         threadProgrammer.start();
         threadProgrammer.join();
         System.out.println("完成了！");
-
 
     }
 }

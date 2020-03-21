@@ -1,4 +1,4 @@
-package threadlocal;
+package threadpool.threadlocal;
 
 public abstract  class TestAbstract {
     public Integer getDsad() {

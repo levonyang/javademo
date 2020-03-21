@@ -14,10 +14,11 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  * Author: zhangxuepei
  * Date: 2020/3/16 19:08
  * Content:
- *    测试读写锁互斥锁，
- *       支持重入
- *       写锁是互斥的
- *       读锁是共享
+ *    测试读写锁互斥锁
+ *    特点：支持重入
+ *          写锁是互斥的
+ *          读锁是共享
+ *          写锁可以降级为读锁，读锁不可以升级为写锁
  */
 public class TestReentrantWriteLock {
     public static void main(String[] args) throws InterruptedException {

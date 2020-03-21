@@ -1,4 +1,4 @@
-package threadpool.demo;
+package threadpool;
 
 import java.util.List;
 import java.util.concurrent.Callable;

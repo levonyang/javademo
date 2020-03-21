@@ -12,7 +12,7 @@ import java.util.concurrent.Phaser;
  *         //最后释放第一个注册 作为都到达的信号
  *  https://blog.csdn.net/u010739551/article/details/51083004
  */
-public class TestPhaser4 {
+public class TestPhaser {
     // 每个Phaser对象对应的工作线程（任务）数
     private static final int TASKS_PER_PHASER = 4;
 
@@ -28,8 +28,6 @@ public class TestPhaser4 {
             }
         };
         ddd(phaser);
-
-       // phaser.arriveAndAwaitAdvance();
         System.out.println(phaser.getRegisteredParties()+"dsaaaaa");
     }
     private static  void ddd(Phaser phaser){
