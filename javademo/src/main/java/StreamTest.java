@@ -6,6 +6,11 @@ import java.util.stream.Stream;
 
 /**
  * 对于JAVA 流计算
+ *
+ * 对于Stream 的性能测试
+ * https://www.cnblogs.com/CarpenterLee/p/6675568.html
+ *
+ * 多核环境性能提高很多，  一般现在服务都是多核服务器，所以放心使用
  */
 public class StreamTest {
     public static void main(String[] args) {
