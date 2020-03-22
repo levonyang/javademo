@@ -1,12 +1,14 @@
-
+server:
+  port: 8090
 spring:
   # Redis 配置
   redis:
-    database: 0  #数据库索引(默认为0)
+    database: 0  #数据库索引(默认为0)，redis支持分空间数据库
     host: 192.168.2.200
     port: 6379  #默认链接端口
     password:  123456
-    lettuce:
+    lettuce:    #Redis的一个客户端实现 还有jedis客户端实现 配置差不多
+                 # Redis 集中客户端说明 https://www.cnblogs.com/liyan492/p/9858548.html
       pool:
         max-active: 8 #最大链接池
         max-wait: -1 #最大阻赛等待时间（使用负值没有限制）默认为-1
@@ -15,5 +17,3 @@ spring:
   main:
     ##注意 必须加上引号 不可能会出错
     banner-mode: "off"
-server:
-  port: 8090

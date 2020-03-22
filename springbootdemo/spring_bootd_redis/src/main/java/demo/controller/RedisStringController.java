@@ -21,9 +21,6 @@ public class RedisStringController {
     @PutMapping("/string/put")
     public  void  put(String key , @RequestParam(required = false,defaultValue = "default") String value){
         stringRedisTemplate.opsForValue().set(key, value,15, TimeUnit.SECONDS);
-        stringRedisTemplate.opsForCluster();
-        stringRedisTemplate.opsForHyperLogLog();
-            
 
     }
 
