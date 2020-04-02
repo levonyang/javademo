@@ -42,6 +42,8 @@ public class TestProducer {
         * 具体参考kafkaAdmin的initialize()方法中 初始化topic
         * this.applicationContext.getBeansOfType(NewTopic.class, false, false).values();
         * 注解方式可行
+        * kafkaadmin 的使用
+        * https://www.jb51.net/article/181270.htm
         * */
     }
 }
