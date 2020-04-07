@@ -12,9 +12,12 @@ import spring.study.beanpostproessor.bean.EmbeddedService;
  */
 public class SimpleRegistrar implements ImportBeanDefinitionRegistrar {
     @Override
-    public void registerBeanDefinitions(AnnotationMetadata importingClassMetadata, BeanDefinitionRegistry registry) {
-        AnnotatedGenericBeanDefinition beanDefinition = new AnnotatedGenericBeanDefinition(EmbeddedService.class);
-        beanDefinition.getPropertyValues().add("id", "embedded_id_001");
+    public void registerBeanDefinitions(AnnotationMetadata importingClassMetadata,
+                                        BeanDefinitionRegistry registry) {
+        AnnotatedGenericBeanDefinition beanDefinition =
+                new AnnotatedGenericBeanDefinition(EmbeddedService.class);
+        beanDefinition.getPropertyValues().add("id",
+                "embedded_id_001");
         registry.registerBeanDefinition("beanFromSimpleRegistrar", beanDefinition);
     }
 }

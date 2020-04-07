@@ -23,14 +23,18 @@ public class MyBeanFactoryPostProcessor implements BeanFactoryPostProcessor {
     }
 
     @Override
-    public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
+    public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory)
+            throws BeansException {
         System.out.println("------ register custom bean in BeanFactoryPostProcessor");
         beanFactory.registerSingleton("createByBeanFactoryPostProcessor", new SimpleBeanInBeanFactoryPostProcessor());
         if(beanFactory instanceof BeanDefinitionRegistry) {
             BeanDefinitionReaderUtils.registerBeanDefinition(
                     new BeanDefinitionHolder(new AnnotatedGenericBeanDefinition(
                             SimpleBeanWithDefinitionInBeanFactoryPostProcessor.class),
-                            "simpleBeanWithDefinitionInBeanFactoryPostProcessor"),                             (BeanDefinitionRegistry) beanFactory
+                            "simpleBeanWithDefinitionInBeanFactoryPostProcessor"),
+                    (BeanDefinitionRegistry) beanFactory
+
+
             );
         }
     }
