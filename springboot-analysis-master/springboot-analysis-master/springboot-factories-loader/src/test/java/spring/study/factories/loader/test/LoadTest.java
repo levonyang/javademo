@@ -2,7 +2,9 @@ package spring.study.factories.loader.test;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.core.io.support.SpringFactoriesLoader;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import spring.study.factories.loader.SpringFactoriesApplication;
@@ -16,7 +18,7 @@ import java.util.List;
  * Created by Format on 2017/6/3.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = SpringFactoriesApplication.class)
+@SpringBootApplication(classes = SpringFactoriesApplication.class)
 public class LoadTest {
 
     @Test
@@ -36,7 +38,8 @@ public class LoadTest {
 
     @Test
     public void test02() {
-        List<String> classes = SpringFactoriesLoader.loadFactoryNames(EnableAutoConfiguration.class, this.getClass().getClassLoader());
+        List<String> classes = SpringFactoriesLoader.loadFactoryNames(EnableAutoConfiguration.class,
+                this.getClass().getClassLoader());
         classes.forEach(clazz -> {
             System.out.println("==== " + clazz);
         });
