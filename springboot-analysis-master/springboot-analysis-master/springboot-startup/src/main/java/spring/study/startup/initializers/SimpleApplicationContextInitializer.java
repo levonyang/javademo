@@ -8,7 +8,8 @@ import spring.study.startup.bean.SimpleBean;
 /**
  * 创建Context 监听事件
  */
-public class SimpleApplicationContextInitializer implements ApplicationContextInitializer<ConfigurableApplicationContext> {
+public class SimpleApplicationContextInitializer implements ApplicationContextInitializer
+        <ConfigurableApplicationContext> {
     @Override
     public void initialize(ConfigurableApplicationContext applicationContext) {
         if(applicationContext instanceof AnnotationConfigEmbeddedWebApplicationContext) {
