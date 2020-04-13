@@ -1,6 +1,4 @@
 import org.zxp.graph.EdgeWeighter;
-import org.zxp.graph.RoadReaderWriter;
-import org.zxp.graph.ThreadLocalGraphGenerator;
 import org.zxp.graph.ThreadLocalNode;
 import org.geotools.graph.path.DijkstraShortestPathFinder;
 import org.geotools.graph.path.Path;
