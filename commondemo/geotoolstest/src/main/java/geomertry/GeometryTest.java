@@ -1,7 +1,6 @@
 package geomertry;
 
 import org.geotools.feature.FeatureIterator;
-import org.geotools.feature.simple.SimpleFeatureBuilder;
 import org.geotools.feature.simple.SimpleFeatureTypeBuilder;
 import org.geotools.geojson.feature.FeatureJSON;
 import org.geotools.geojson.geom.GeometryJSON;
@@ -9,7 +8,6 @@ import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.GeometryFactory;
 import org.locationtech.jts.geom.Point;
 import org.opengis.feature.simple.SimpleFeature;
-import org.opengis.geometry.Geometry;
 
 import java.io.IOException;
 
