@@ -1,8 +1,10 @@
 package com.test.login.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
@@ -16,6 +18,11 @@ import java.security.KeyPair;
 @Configuration
 @EnableAuthorizationServer
 public class OAuthConfigurer extends AuthorizationServerConfigurerAdapter {
+    private final PasswordEncoder passwordEncoder;
+    @Autowired
+    public OAuthConfigurer(PasswordEncoder passwordEncoder) {
+        this.passwordEncoder = passwordEncoder;
+    }
 
     @Bean
     public JwtAccessTokenConverter jwtAccessTokenConverter() {
@@ -30,21 +37,19 @@ public class OAuthConfigurer extends AuthorizationServerConfigurerAdapter {
     public void configure(ClientDetailsServiceConfigurer clients)
             throws Exception {
         //客户端 id 和客户端安全
-        clients.inMemory().withClient("ssoclient").secret("ssosecret")
+        clients.inMemory().withClient("resource").secret(passwordEncoder.encode("123"))
                 .autoApprove(true)
                 .authorizedGrantTypes("authorization_code", "refresh_token").scopes("openid");
     }
 
     @Override
-    public void configure(AuthorizationServerSecurityConfigurer security)
-            throws Exception {
+    public void configure(AuthorizationServerSecurityConfigurer security) {
         security.tokenKeyAccess("permitAll()").checkTokenAccess(
                 "isAuthenticated()").allowFormAuthenticationForClients();
     }
 
     @Override
-    public void configure(AuthorizationServerEndpointsConfigurer endpoints)
-            throws Exception {
+    public void configure(AuthorizationServerEndpointsConfigurer endpoints) {
         endpoints.accessTokenConverter(jwtAccessTokenConverter());
     }
 

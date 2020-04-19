@@ -21,6 +21,7 @@ import java.util.Map;
 public class LoginController {
     @RequestMapping("/login")
     public String login(){
+        System.out.println("dddddddddddddddddd");
         return "login";
     }
 
@@ -30,7 +31,7 @@ public class LoginController {
         return "tologin";
     }
 
-    @RequestMapping("/")
+    @RequestMapping("/loginsuccess")
     public String home(){
         return "index";
     }
@@ -56,8 +57,7 @@ public class LoginController {
 
     @RequestMapping(value = "/checkcode")
     @ResponseBody
-    public String checkCode(HttpServletRequest request, HttpSession session)
-            throws Exception {
+    public String checkCode(HttpServletRequest request, HttpSession session) {
         String checkCode = request.getParameter("checkCode");
         Object simple = session.getAttribute("simpleCaptcha") ; //验证码对象
         if(simple == null){

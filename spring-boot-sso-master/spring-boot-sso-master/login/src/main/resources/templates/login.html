@@ -28,7 +28,7 @@
             <div th:if="${#httpServletRequest.remoteUser != null}">
                 <input th:value="${#httpServletRequest.remoteUser}" id="errorMsg" type="hidden"/>
             </div>
-            <form th:action="@{/login}" id="loginForm" method="post">
+            <form th:action="@{/loginsuccess}" id="loginForm" method="post">
                 <div class="loginTit png"></div>
                 <ul class="infList">
                     <li class="grayBox">
