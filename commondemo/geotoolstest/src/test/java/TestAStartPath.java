@@ -1,6 +1,4 @@
-import org.zxp.graph.RoadReaderWriter;
 import org.zxp.graph.ThreadLocalEdge;
-import org.zxp.graph.ThreadLocalGraphGenerator;
 import org.zxp.graph.ThreadLocalNode;
 import org.geotools.graph.path.AStarShortestPathFinder;
 import org.geotools.graph.path.Path;

@@ -7,20 +7,18 @@ import other.pkg.OtherBean;
 import spring.study.componentprovider.annotation.EnableConsumer;
 
 /**
- * Created by Format on 2017/6/10.
  */
 @SpringBootApplication
 @EnableConsumer
 public class CustomComponentProviderApplication {
 
     public static void main(String[] args) {
-
-
-
         SpringApplication.run(
                 new Object[] {
                         CustomComponentProviderApplication.class
+                        //通过XML文件注解Bean进来
                         , new ClassPathResource("beans.xml")
+                        //扫描的packing参数
                         , OtherBean.class.getPackage()
 //                        , String.valueOf("other.pkg")
                 }

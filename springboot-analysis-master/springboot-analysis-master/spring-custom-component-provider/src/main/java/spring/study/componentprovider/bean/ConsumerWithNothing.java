@@ -3,7 +3,7 @@ package spring.study.componentprovider.bean;
 
 
 /**
- * Created by Format on 2017/6/11.
+ * 什么也没有继承 注解也没有 将不会被扫描到
  */
 public class ConsumerWithNothing {
 }

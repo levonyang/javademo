@@ -36,7 +36,7 @@ public class NIOClient {
     public void begin() throws IOException {
         this.host="localhost";
         this.port = 8080;
-        // 创建选择器
+        //创建选择器
         selector = Selector.open();
         selector.select(1000);
         // SocketChannel 绑定客户端的本地地址

@@ -1,7 +1,5 @@
 import org.zxp.graph.DistanceAccessibilityPathFinder;
 import org.zxp.graph.EdgeWeighter;
-import org.zxp.graph.RoadReaderWriter;
-import org.zxp.graph.ThreadLocalGraphGenerator;
 import org.zxp.graph.ThreadLocalNode;
 import org.geotools.graph.structure.Graph;
 import org.geotools.graph.structure.Graphable;

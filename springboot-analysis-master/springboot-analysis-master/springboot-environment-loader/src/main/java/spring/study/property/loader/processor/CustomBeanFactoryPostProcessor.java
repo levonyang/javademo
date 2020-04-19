@@ -10,19 +10,23 @@ import org.springframework.core.env.MapPropertySource;
 import org.springframework.core.env.StandardEnvironment;
 import org.springframework.stereotype.Component;
 
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
  * Created by Format on 2017/6/9.
  */
 @Component
-public class CustomBeanFactoryPostProcessor implements BeanFactoryPostProcessor, ApplicationContextAware {
+public class CustomBeanFactoryPostProcessor implements BeanFactoryPostProcessor,
+        ApplicationContextAware {
 
     private ApplicationContext applicationContext;
 
     @Override
     public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
+
         String name = "custom";
         Map<String, Object> map = new HashMap<>();
         map.put("my.name", "processor");

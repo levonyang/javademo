@@ -7,9 +7,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-/**
- * Created by Format on 2017/8/18.
- */
 @SpringBootApplication
 public class LoggingApplication {
 
@@ -21,13 +18,7 @@ public class LoggingApplication {
 
     @Bean
     public CommandLineRunner runner() {
-        return new CommandLineRunner() {
-
-            @Override
-            public void run(String... args) throws Exception {
-                logger.info("runner execute");
-            }
-        };
+        return args -> logger.info("runner execute");
     }
 
 }
