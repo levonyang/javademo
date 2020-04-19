@@ -12,14 +12,12 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.Optional;
 
-@Controller
+@RestController
 @RequestMapping("/role")
 public class RoleController {
     private static Logger logger = LoggerFactory.getLogger(RoleController.class);
@@ -35,7 +33,7 @@ public class RoleController {
 
     @RequestMapping(value="/{id}")
     public String show(ModelMap model,@PathVariable Long id) {
-        Role role = roleRepository.findOne(id);
+        Role role = roleRepository.findById(id).get();
         model.addAttribute("role",role);
         return "role/show";
     }
@@ -67,7 +65,7 @@ public class RoleController {
 
     @RequestMapping(value="/edit/{id}")
     public String update(ModelMap model,@PathVariable Long id){
-        Role role = roleRepository.findOne(id);
+        Role role = roleRepository.findById(id).get();
         model.addAttribute("role",role);
         return "role/edit";
     }
@@ -83,7 +81,7 @@ public class RoleController {
     @RequestMapping(value="/delete/{id}",method = RequestMethod.GET)
     @ResponseBody
     public String delete(@PathVariable Long id) throws Exception{
-        roleRepository.delete(id);
+        roleRepository.deleteById(id);
         logger.info("删除->ID="+id);
         return "1";
     }

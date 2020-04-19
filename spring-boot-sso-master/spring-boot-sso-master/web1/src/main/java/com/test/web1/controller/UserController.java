@@ -15,29 +15,28 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping("/user")
 public class UserController {
     private static Logger logger = LoggerFactory.getLogger(UserController.class);
 
+    private final UserRepository userRepository;
+    private final DepartmentRepository departmentRepository;
+    private final RoleRepository roleRepository;
     @Autowired
-    private UserRepository userRepository;
-    @Autowired
-    private DepartmentRepository departmentRepository;
-    @Autowired
-    private RoleRepository roleRepository;
+    public UserController(UserRepository userRepository, DepartmentRepository departmentRepository, RoleRepository roleRepository) {
+        this.userRepository = userRepository;
+        this.departmentRepository = departmentRepository;
+        this.roleRepository = roleRepository;
+    }
 
     @RequestMapping("/index")
     public String index(ModelMap model, Principal user) throws Exception{
@@ -47,7 +46,7 @@ public class UserController {
 
     @RequestMapping(value="/{id}")
     public String show(ModelMap model,@PathVariable Long id) {
-        User user = userRepository.findOne(id);
+        User user = userRepository.findById(id).get();
         model.addAttribute("user",user);
         return "user/show";
     }
@@ -88,7 +87,7 @@ public class UserController {
 
     @RequestMapping(value="/edit/{id}")
     public String update(ModelMap model,@PathVariable Long id){
-        User user = userRepository.findOne(id);
+        User user = userRepository.findById(id).get();
 
         List<Department> departments = departmentRepository.findAll();
         List<Role> roles = roleRepository.findAll();
@@ -116,7 +115,7 @@ public class UserController {
     @RequestMapping(value="/delete/{id}",method = RequestMethod.GET)
     @ResponseBody
     public String delete(@PathVariable Long id) throws Exception{
-        userRepository.delete(id);
+        userRepository.deleteById(id);
         logger.info("删除->ID="+id);
         return "1";
     }

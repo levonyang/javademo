@@ -28,7 +28,8 @@ public class LaunchedURLClassLoaderTest {
 
 //            classLoader.loadClass("org.springframework.boot.loader.JarLauncher");
 //            classLoader.loadClass("org.springframework.boot.SpringApplication");
-            classLoader.loadClass("org.springframework.boot.autoconfigure.web.DispatcherServletAutoConfiguration");
+            classLoader.loadClass("org.springframework.boot.autoconfigure." +
+                    "web.DispatcherServletAutoConfiguration");
         } catch (Exception e) {
             e.printStackTrace();
         }

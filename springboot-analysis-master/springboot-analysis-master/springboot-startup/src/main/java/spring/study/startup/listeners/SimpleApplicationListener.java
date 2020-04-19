@@ -13,11 +13,14 @@ public class SimpleApplicationListener implements ApplicationListener<Applicatio
     @Override
     public void onApplicationEvent(ApplicationEvent event) {
         if(event instanceof ApplicationStartingEvent) {
-            //Spring 程序启动事件  这个事件比较早 在所有启动最先完成
+            //Spring 程序启动事件  这个事件比较早
+            // 启动最先完成
             //在启动Web容器和加载配置之前
+            System.out.println("我要监听 ApplicationListener的ApplicationStartingEvent 最先初始化 ");
             System.out.println("===== custom started event in initializer");
         } else if(event instanceof ApplicationReadyEvent) {
             //Spring 程序已经准备就绪
+            System.out.println("我要监听ApplicationListener的ApplicationReadyEvent代表初始化完成 ");
             System.out.println("===== custom ready event in initializer");
         }
     }
