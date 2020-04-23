@@ -24,8 +24,11 @@ import java.security.Principal;
 public class DepartmentController {
     private static Logger logger = LoggerFactory.getLogger(DepartmentController.class);
 
+    private final DepartmentRepository departmentRepository;
     @Autowired
-    private DepartmentRepository departmentRepository;
+    public DepartmentController(DepartmentRepository departmentRepository) {
+        this.departmentRepository = departmentRepository;
+    }
 
     @RequestMapping("/index")
     public String index(ModelMap model, Principal user) throws Exception{
@@ -35,7 +38,7 @@ public class DepartmentController {
 
     @RequestMapping(value="/{id}")
     public String show(ModelMap model,@PathVariable Long id) {
-        Department department = departmentRepository.findOne(id);
+        Department department = departmentRepository.findById(id).get();
         model.addAttribute("department",department);
         return "department/show";
     }
@@ -67,7 +70,7 @@ public class DepartmentController {
 
     @RequestMapping(value="/edit/{id}")
     public String update(ModelMap model,@PathVariable Long id){
-        Department department = departmentRepository.findOne(id);
+        Department department = departmentRepository.findById(id).get();
         model.addAttribute("department",department);
         return "department/edit";
     }
@@ -83,7 +86,7 @@ public class DepartmentController {
     @RequestMapping(value="/delete/{id}",method = RequestMethod.GET)
     @ResponseBody
     public String delete(@PathVariable Long id) throws Exception{
-        departmentRepository.delete(id);
+        departmentRepository.deleteById(id);
         logger.info("删除->ID="+id);
         return "1";
     }

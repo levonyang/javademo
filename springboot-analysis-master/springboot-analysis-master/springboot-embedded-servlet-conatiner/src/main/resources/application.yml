@@ -6,4 +6,6 @@ server:
   error:
     path: /errerr
 #    whitelabel:
+logging:
+  level: warn
 #      enabled: false

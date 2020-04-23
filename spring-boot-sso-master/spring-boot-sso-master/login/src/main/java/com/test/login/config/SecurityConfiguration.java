@@ -18,18 +18,20 @@ import org.springframework.security.web.authentication.rememberme.JdbcTokenRepos
 import javax.sql.DataSource;
 
 @Configuration
-@Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
+@Order(SecurityProperties.DEFAULT_FILTER_ORDER)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+    private final CustomUserDetailsService customUserDetailsService;
+
+    private final DataSource dataSource;
     @Autowired
-    private CustomUserDetailsService customUserDetailsService;
-    @Autowired
-    @Qualifier("dataSource")
-    private DataSource dataSource;
+    public SecurityConfiguration(CustomUserDetailsService customUserDetailsService, DataSource dataSource) {
+        this.customUserDetailsService = customUserDetailsService;
+        this.dataSource = dataSource;
+    }
 
     @Override
-    protected void configure(AuthenticationManagerBuilder auth)
-            throws Exception {
-      //  auth.userDetailsService(customUserDetailsService).passwordEncoder(passwordEncoder());
+    protected void configure(AuthenticationManagerBuilder auth) {
+        //  auth.userDetailsService(customUserDetailsService).passwordEncoder(passwordEncoder());
         //remember me
         auth.eraseCredentials(false);
     }
@@ -38,8 +40,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.formLogin().loginPage("/login").permitAll().
                 successHandler(loginSuccessHandler()).and().authorizeRequests()
-                .antMatchers("/images/**", "/checkCode", "/scripts/**", "/styles/**").permitAll()
-                .anyRequest().authenticated()
+                .antMatchers("/images/**", "/checkCode", "/scripts/**", "/styles/**")
+                .permitAll().anyRequest().authenticated()
                 .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.NEVER)
                 .and().exceptionHandling().accessDeniedPage("/deny")
                 .and().rememberMe().tokenValiditySeconds(86400).tokenRepository(tokenRepository());
@@ -51,14 +53,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    public JdbcTokenRepositoryImpl tokenRepository(){
+    public JdbcTokenRepositoryImpl tokenRepository() {
         JdbcTokenRepositoryImpl jtr = new JdbcTokenRepositoryImpl();
         jtr.setDataSource(dataSource);
         return jtr;
     }
 
     @Bean
-    public LoginSuccessHandler loginSuccessHandler(){
+    public LoginSuccessHandler loginSuccessHandler() {
         return new LoginSuccessHandler();
     }
 }

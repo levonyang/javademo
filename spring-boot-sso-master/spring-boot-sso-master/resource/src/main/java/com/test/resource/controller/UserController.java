@@ -12,18 +12,21 @@ import java.util.Map;
 
 @RestController
 public class UserController {
+    private final UserRepository userRepository;
     @Autowired
-    private UserRepository userRepository;
+    public UserController(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @RequestMapping("/user")
     public Map<String, Object> user(Principal puser) {
         User user = userRepository.findByName(puser.getName());
-        Map<String, Object> userinfo = new HashMap<>();
-        userinfo.put("id", user.getId());
-        userinfo.put("name",user.getName());
-        userinfo.put("email", user.getEmail());
-        userinfo.put("department",user.getDepartment().getName());
-        userinfo.put("createdate", user.getCreatedate());
-        return userinfo;
+        Map<String, Object> ulcering = new HashMap<>();
+        ulcering.put("id", user.getId());
+        ulcering.put("name",user.getName());
+        ulcering.put("email", user.getEmail());
+        ulcering.put("department",user.getDepartment().getName());
+        ulcering.put("createdate", user.getCreatedate());
+        return ulcering;
     }
 }

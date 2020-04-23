@@ -13,7 +13,8 @@ public class SimpleApplicationContextInitializer implements ApplicationContextIn
     @Override
     public void initialize(ConfigurableApplicationContext applicationContext) {
         if(applicationContext instanceof AnnotationConfigEmbeddedWebApplicationContext) {
-            System.out.println("applicationContext");
+            System.out.println("我监听的是ApplicationContextInitializer的AnnotationConfigEmbeddedWebApplicationContext" +
+                    "application初始化");
             //通过一个Bean工厂注册一个单实例对象
             //Bean的name和Bean的对象
             ((AnnotationConfigEmbeddedWebApplicationContext)applicationContext).

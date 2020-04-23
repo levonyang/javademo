@@ -29,10 +29,14 @@ import java.util.List;
 @EnableOAuth2Sso
 @EnableConfigurationProperties(SecuritySettings.class)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+    private final AuthenticationManager authenticationManager;
+    private final SecuritySettings settings;
+
     @Autowired
-    private AuthenticationManager authenticationManager;
-    @Autowired
-    private SecuritySettings settings;
+    public SecurityConfiguration(SecuritySettings settings,AuthenticationManager authenticationManager) {
+        this.authenticationManager = authenticationManager;
+        this.settings = settings;
+    }
 
     @Override
     public void configure(HttpSecurity http) throws Exception {

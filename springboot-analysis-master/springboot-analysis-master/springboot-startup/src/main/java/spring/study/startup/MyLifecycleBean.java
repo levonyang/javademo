@@ -31,22 +31,21 @@ public class MyLifecycleBean implements SmartLifecycle , ApplicationContextAware
     public void stop(Runnable callback) {
         //Springboot 停止时候执行
         //所有停止完成后执行
-        System.out.println("------ my lifecycle bean stop callback");
+        System.out.println("SmartLifecycle  智能化生命周期停止，Runnable");
     }
 
     @Override
     public void start() {
         //刷新Context时候进行初始化Bean，初始化Bean之后开启智能化声明周期
         running = true;
-        //生命周期开始 初始化完成之后执行的 比较晚
-        System.out.println("------ my lifecycle bean start");
+        System.out.println("SmartLifecycle  智能化生命周期开始，表明所有的bean都初始化完成");
     }
 
     @Override
     public void stop() {
         //似乎 普通测试时候未执行
         running = false;
-        System.out.println("------ my lifecycle bean stop");
+        System.out.println("SmartLifecycle  智能化生命周期停止");
     }
 
     @Override

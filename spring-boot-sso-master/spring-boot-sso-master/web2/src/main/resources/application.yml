@@ -12,12 +12,12 @@ security:
       client:
         clientId: ssoclient
         clientSecret: ssosecret
-        accessTokenUri: http://localhost/oauth/token
-        userAuthorizationUri: http://localhost/oauth/authorize
+        accessTokenUri: http://localhost:990/oauth/token
+        userAuthorizationUri: http://localhost:990/oauth/authorize
         clientAuthenticationScheme: form
       resource:
         jwt:
-          keyUri: http://localhost/oauth/token_key
+          keyUri: http://localhost:990/oauth/token_key
 
 securityconfig:
   logoutsuccssurl: /tosignout
