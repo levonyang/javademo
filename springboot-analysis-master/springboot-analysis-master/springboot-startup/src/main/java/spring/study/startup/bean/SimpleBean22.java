@@ -1,7 +1,6 @@
 package spring.study.startup.bean;
 
-import lombok.*;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.ToString;
 import org.springframework.stereotype.Component;
 
 /**
@@ -12,13 +11,13 @@ import org.springframework.stereotype.Component;
 @ToString
 //Spring注解参数  注册一个组成
 @Component
-public class SimpleBean {
+public class SimpleBean22 {
     public String id;
     public String name;
-    public SimpleBean() {
-        System.out.println("kong初始化了");
+    public SimpleBean22() {
+        System.out.println("kong222初始化了");
     }
-    public SimpleBean(String id, String name) {
+    public SimpleBean22(String id, String name) {
         this.id = id;
         this.name = name;
         System.out.println("初始化了");

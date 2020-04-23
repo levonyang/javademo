@@ -16,7 +16,8 @@ public class SimpleApplicationContextInitializer implements ApplicationContextIn
             System.out.println("applicationContext");
             //通过一个Bean工厂注册一个单实例对象
             //Bean的name和Bean的对象
-            ((AnnotationConfigEmbeddedWebApplicationContext)applicationContext).getBeanFactory().registerSingleton("testBean",
+            ((AnnotationConfigEmbeddedWebApplicationContext)applicationContext).
+                    getBeanFactory().registerSingleton("testBean",
                     new SimpleBean("id-001", "created by initializer"));
         }
     }
