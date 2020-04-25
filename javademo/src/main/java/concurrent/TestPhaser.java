@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.concurrent.Phaser;
 
 /**
+ * Phaser相位器
  * Content:
  *          //及第一个人 作为管理者
  *         //到达之前 线进行注册一个

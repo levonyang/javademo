@@ -36,23 +36,4 @@ public class MapStudentTest {
         this.name = name;
         this.age = age;
     }
-
-//    @Override
-//    public boolean equals(Object o) {
-//        //return true;
-//        if(o==this)
-//            return true;
-//        if(!(o instanceof Student))
-//            return false;
-//        Student s = (Student)o;
-//        return s.name.equals(name)&&s.age.equals(age);
-//    }
-//
-//    @Override
-//    public int hashCode() {
-//        int result = 17;
-//        result = 31 * result + name.hashCode();
-//        result = 31 * result + age;
-//        return result;
-//    }
 }
