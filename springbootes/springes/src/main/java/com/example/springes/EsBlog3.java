@@ -10,9 +10,10 @@ import java.io.Serializable;
 /**
  * 这里Type设置成为_doc 默认的是
  * 因为7不在支持其他type的设定，8.0不在支持type的设定
+ *    同一个type下面，
  */
 @Document(indexName = "blog", type = "_doc")
-public class EsBlog implements Serializable {
+public class EsBlog3 implements Serializable {
     private static final long serialVersionUID = -2210631390635355780L;
     @Id
     private String id;
@@ -38,9 +39,9 @@ public class EsBlog implements Serializable {
     /**
      * JPA规范要求，防止直接使用
      */
-    protected EsBlog(){}
+    protected EsBlog3(){}
 
-    public EsBlog(String title, String summary, String content) {
+    public EsBlog3(String title, String summary, String content) {
         this.title = title;
         this.summary = summary;
         this.content = content;
