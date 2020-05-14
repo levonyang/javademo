@@ -4,7 +4,6 @@ import org.elasticsearch.client.RestHighLevelClient;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.data.elasticsearch.core.ElasticsearchRestTemplate;
 import org.springframework.data.elasticsearch.core.EntityMapper;
 import org.springframework.data.elasticsearch.core.ResultsMapper;
 import org.springframework.data.elasticsearch.core.convert.ElasticsearchConverter;
@@ -21,7 +20,7 @@ public class SpringEsApplication {
         return new DefaultResultMapper(mappingContext, entityMapper);
     }
     @Bean
-    ElasticsearchRestTemplate elasticsearchTemplate(RestHighLevelClient client, ElasticsearchConverter converter, ResultsMapper resultsMapper) {
+    MyElasticsearchRestTemplate elasticsearchTemplate(RestHighLevelClient client, ElasticsearchConverter converter, ResultsMapper resultsMapper) {
         return new MyElasticsearchRestTemplate(client, converter, resultsMapper);
     }
 }
