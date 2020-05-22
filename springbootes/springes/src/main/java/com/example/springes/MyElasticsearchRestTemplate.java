@@ -158,7 +158,8 @@ public class MyElasticsearchRestTemplate extends AbstractElasticsearchTemplate i
         this(client, elasticsearchConverter, new DefaultResultMapper(elasticsearchConverter.getMappingContext()));
     }
 
-    public MyElasticsearchRestTemplate(RestHighLevelClient client, ElasticsearchConverter elasticsearchConverter, ResultsMapper resultsMapper) {
+    public MyElasticsearchRestTemplate(RestHighLevelClient client,
+                                       ElasticsearchConverter elasticsearchConverter, ResultsMapper resultsMapper) {
 
         super(elasticsearchConverter);
 
@@ -200,11 +201,6 @@ public class MyElasticsearchRestTemplate extends AbstractElasticsearchTemplate i
 
     private static MoreLikeThisQueryBuilder.Item[] toArray(MoreLikeThisQueryBuilder.Item... values) {
         return values;
-    }
-
-    @Deprecated
-    public static String readFileFromClasspath(String url) {
-        return ResourceUtil.readFileFromClasspath(url);
     }
 
     @Override
@@ -564,7 +560,8 @@ public class MyElasticsearchRestTemplate extends AbstractElasticsearchTemplate i
     }
 
     private <T> CloseableIterator<T> doStream(long scrollTimeInMillis, ScrolledPage<T> page, Class<T> clazz, SearchResultMapper mapper) {
-        return StreamQueries.streamResults(page, scrollId -> continueScroll(scrollId, scrollTimeInMillis, clazz, mapper), this::clearScroll);
+        return StreamQueries.streamResults(page, scrollId -> continueScroll
+                (scrollId, scrollTimeInMillis, clazz, mapper), this::clearScroll);
     }
 
     @Override
